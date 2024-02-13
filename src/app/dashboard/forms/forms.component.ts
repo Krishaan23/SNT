@@ -12,7 +12,7 @@ export class FormsComponent implements OnInit {
   public dashboardForm: FormGroup = new FormGroup({});
   public asset_types = ASSET_TYPE;
   public summaryEnable:boolean = false;
-  
+  public result: any = {};
   constructor() {
 
   }
@@ -73,13 +73,12 @@ export class FormsComponent implements OnInit {
 
   onCalculate() {
     this.summaryEnable = true;
-    console.log('CALLED')
+    this.result = this.dashboardForm.value;
   }
 
   onReset() {
     this.summaryEnable = false;
-    // this.dashboardForm.reset();
-    console.log('ENABLE', this.summaryEnable);
+    this.dashboardForm.reset();
   }
 
   createForm() {
@@ -97,7 +96,6 @@ export class FormsComponent implements OnInit {
       amortization: new FormControl('', [Validators.required]),
       market_cap_rate: new FormControl('', [Validators.required]),
     });
-    console.log('FORM', this.dashboardForm);
   }
 
 

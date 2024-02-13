@@ -2,70 +2,118 @@
 <div class="main-page">
   <div class="form-container">
     <form class="form-groups" [formGroup]="dashboardForm" (submit)="onCalculate()" (reset)="onReset()">
-      <div class="form-fields">
-        <!-- <label class="form-labels required-field" for="askingPrice">Asset Type: </label>
-        <input id="askingPrice" type="text" formControlName="asset_type" /> -->
-          <mat-label class="form-labels required-field" for="select-field">Asset Type:</mat-label>
-          <mat-select id="select-field" formControlName="asset_type" placeholder="Select a Asset Type">
-              <mat-option *ngFor="let type of asset_types" [value]="type.value">{{type.label}}</mat-option>
-          </mat-select>
+      <div class="col-1">
+        <div class="form-fields">
+          <!-- <label class="form-labels required-field" for="askingPrice">Asset Type: </label>
+          <input id="askingPrice" type="text" formControlName="asset_type" /> -->
+            <mat-label class="form-labels required-field" for="select-field">Asset Type:</mat-label>
+            <mat-select id="select-field" formControlName="asset_type" placeholder="Select a Asset Type">
+                <mat-option *ngFor="let type of asset_types" [value]="type.value">{{type.label}}</mat-option>
+            </mat-select>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field"  for="askingPrice">Asking Price: </label>
+          <input placeholder="Asking Price" id="askingPrice" type="number" min="0" step="0.01" (blur)="restrictInputValues('asking_price')" formControlName="asking_price" />
+          <!-- <img src="src\assets\img\dollar.png"> -->
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('asking_price')?.dirty  && dashboardForm.get('asking_price')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="units">Units: </label>
+          <input placeholder="Units" id="units" type="number" min=0 (blur)="restrictInputValues('units')" formControlName="units" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('units')?.dirty  && dashboardForm.get('units')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="down_payment">Down Payment: </label>
+          <input placeholder="Down Payment" id="down_payment" type="number" min=0 (blur)="restrictInputValues('down_payment')" formControlName="down_payment" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('down_payment')?.dirty  && dashboardForm.get('down_payment')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-fields">
+          <label class="form-labels required-field" for="int_months">Interset Only Months: </label>
+          <input placeholder="Intrest only in Months" id="int_months" type="number" min=0 (blur)="restrictInputValues('int_months')" formControlName="int_months" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('int_months')?.dirty  && dashboardForm.get('int_months')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="repairs">Repairs: </label>
+          <input placeholder="Repairs" id="repairs" type="number" min=0 (blur)="restrictInputValues('repairs')" formControlName="repairs" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('repairs')?.dirty  && dashboardForm.get('repairs')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="op_reservers">Operating Reserves: </label>
+          <input placeholder="Operational Reserves" id="op_reservers" type="number" min=0 (blur)="restrictInputValues('op_reservers')" formControlName="op_reservers" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('op_reservers')?.dirty  && dashboardForm.get('op_reservers')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="gross_income">Effective Gross Income: </label>
+          <input placeholder="Effective Gross Income" id="gross_income" type="number" min=0 (blur)="restrictInputValues('gross_income')" formControlName="gross_income" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('gross_income')?.dirty  && dashboardForm.get('gross_income')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
       </div>
 
-      <div class="form-fields">
-        <label class="form-labels required-field"  for="askingPrice">Asking Price: </label>
-        <input placeholder="Asking Price" id="askingPrice" type="number" min="0" step="0.01" (blur)="restrictInputValues('asking_price')" formControlName="asking_price" />
-        <!-- <img src="src\assets\img\dollar.png"> -->
-        <i class="fa-sharp fa-solid fa-dollar-sign"></i>
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="units">Units: </label>
-        <input placeholder="Units" id="units" type="number" min=0 (blur)="restrictInputValues('units')" formControlName="units" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="down_payment">Down Payment: </label>
-        <input placeholder="Down Payment" id="down_payment" type="number" min=0 (blur)="restrictInputValues('down_payment')" formControlName="down_payment" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="int_months">Interset Only Months: </label>
-        <input placeholder="Intrest only in Months" id="int_months" type="number" min=0 (blur)="restrictInputValues('int_months')" formControlName="int_months" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="repairs">Repairs: </label>
-        <input placeholder="Repairs" id="repairs" type="number" min=0 (blur)="restrictInputValues('repairs')" formControlName="repairs" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="op_reservers">Operating Reserves: </label>
-        <input placeholder="Operational Reserves" id="op_reservers" type="number" min=0 (blur)="restrictInputValues('op_reservers')" formControlName="op_reservers" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="gross_income">Effective Gross Income: </label>
-        <input placeholder="Effective Gross Income" id="gross_income" type="number" min=0 (blur)="restrictInputValues('gross_income')" formControlName="gross_income" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="total_expenses">Total Expenses: </label>
-        <input placeholder="Total Expenses" id="total_expenses" type="number" min=0 (blur)="restrictInputValues('total_expenses')" formControlName="total_expenses" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="intreset_rates">Interset Rates: </label>
-        <input placeholder="Interset Rates" id="intreset_rates" type="number" min=0 (blur)="restrictInputValues('intreset_rates')" formControlName="intreset_rates" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="amortization">Amortization Years: </label>
-        <input placeholder="Amortization Years" id="amortization" type="number" min=0 (blur)="restrictInputValues('amortization')" formControlName="amortization" />
-      </div>
-
-      <div class="form-fields">
-        <label class="form-labels required-field" for="market_cap_rate">Market Cap Rate: </label>
-        <input placeholder="Market Cap Rate" id="market_cap_rate" type="number" min=0 (blur)="restrictInputValues('market_cap_rate')" formControlName="market_cap_rate"/>
+      <div class="col-3">
+        <div class="form-fields">
+          <label class="form-labels required-field" for="total_expenses">Total Expenses: </label>
+          <input placeholder="Total Expenses" id="total_expenses" type="number" min=0 (blur)="restrictInputValues('total_expenses')" formControlName="total_expenses" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('total_expenses')?.dirty  && dashboardForm.get('total_expenses')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="intreset_rates">Interset Rates: </label>
+          <input placeholder="Interset Rates" id="intreset_rates" type="number" min=0 (blur)="restrictInputValues('intreset_rates')" formControlName="intreset_rates" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('intreset_rates')?.dirty  && dashboardForm.get('intreset_rates')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="amortization">Amortization Years: </label>
+          <input placeholder="Amortization Years" id="amortization" type="number" min=0 (blur)="restrictInputValues('amortization')" formControlName="amortization" />
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('amortization')?.dirty  && dashboardForm.get('amortization')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
+  
+        <div class="form-fields">
+          <label class="form-labels required-field" for="market_cap_rate">Market Cap Rate: </label>
+          <input placeholder="Market Cap Rate" id="market_cap_rate" type="number" min=0 (blur)="restrictInputValues('market_cap_rate')" formControlName="market_cap_rate"/>
+          <div class="text-danger"
+          *ngIf="dashboardForm.get('market_cap_rate')?.dirty  && dashboardForm.get('market_cap_rate')?.hasError('required')">
+          This field is required.
+           </div>
+        </div>
       </div>
       <div class="submit-btn">
           <button type="submit" class="calculate-btn" (click)="onCalculate()">Calculate</button>
@@ -75,6 +123,6 @@
   </div>
 
   <div class="summary-container" *ngIf="summaryEnable">
-    <app-summary [enabled]="summaryEnable"></app-summary>
+    <app-summary [formValue]="result" [enabled]="summaryEnable"></app-summary>
   </div>
 </div>

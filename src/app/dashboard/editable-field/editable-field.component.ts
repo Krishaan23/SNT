@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 export class EditableFieldComponent implements OnInit,OnChanges {
   public edit:boolean = false;
   @Input() value: number = 0;
+  @Input() key: string = '';
   @Output() calculateValues = new EventEmitter<any>();
   constructor() {
 
@@ -21,6 +22,6 @@ export class EditableFieldComponent implements OnInit,OnChanges {
 
   onBlurEvent() {
     this.edit = false;
-    this.calculateValues.emit(this.value);
+    this.calculateValues.emit({key: this.key, value: this.value});
   }
 }

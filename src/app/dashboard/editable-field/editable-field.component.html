@@ -4,6 +4,6 @@
         <span (click)="edit = true">Edit</span>
     </div>
     <div class="edit" *ngIf="edit">
-        <input type="number"                    [(ngModel)]="value" (blur)="onBlurEvent()"/>
+        <input type="number" [(ngModel)]="value" (blur)="onBlurEvent()"/>
     </div>
 </div>
