@@ -1,0 +1,31 @@
+.summary-container {
+    min-height: 700px;
+}
+
+.summary-tab {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        .units {
+            padding: 3em;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+}
+
+.acquisition-tab {
+    padding: 3em;
+    .units {
+        padding: 3em;
+    }
+}
+.endgame-plan {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    .units {
+        padding: 3em;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,9 @@
+<div class="editable-container">
+    <div class="value-container" *ngIf="!edit">
+        <span>{{value}}</span>
+        <span (click)="edit = true">Edit</span>
+    </div>
+    <div class="edit" *ngIf="edit">
+        <input type="number"                    [(ngModel)]="value" (blur)="onBlurEvent()"/>
+    </div>
+</div>

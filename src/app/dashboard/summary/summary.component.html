@@ -1,0 +1,250 @@
+<div class="summary-container" *ngIf="enabled">
+    <mat-tab-group>
+        <mat-tab label="Summary"> 
+            <div class="summary-tab">
+                <div class="col-1">
+                    <div class="units">
+                        <label>Purchase Price</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>No of Units</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>EMD & %</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>2 - Loan</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Interest Rate</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Amortization</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="units">
+                        <label>Interest Only</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Acquisition Fee</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Eff Gross Income</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Total Expenses & %</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>NOI</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Debt coverage Ratio (Y1)</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="units">
+                        <label>Debt Service</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Cash flow after Debt Service</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>LP - Equity Share</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>GP - Equity Share</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Preferred Return to LP</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Asset Management Fee</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="units">
+                        <label>Fee to Mgr</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Gross Rent Mltiplier</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Cash on Cash return Avg</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Average Annual Retun</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>IRR</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Total Returns</label>
+                        <span></span>
+                    </div>
+                </div>
+            </div>    
+        
+        </mat-tab>
+        <mat-tab label="Acquisition Expenses"> 
+            <div class="acquisition">
+                <div class="acquisition-tab">
+                    <div class="units">
+                        <label>Down payment</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Closing cost</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Acquistion Fee</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Repair</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Total Capital </label>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+        </mat-tab>
+        <mat-tab label="End Game Plan"> 
+            <div class="endgame-plan">
+                <div class="col-1">
+                    <div class="units">
+                        <label>Cash out Re-Finance at Year</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Closing cost</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>After Sale</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Amount Paid to LP</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Amount paid to GP</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="units">
+                        <label>IRR</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Cash on Cash Average</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Refianance</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Re-Fianance LTV</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Interest Rate</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="units">
+                        <label>Amortization</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Re-Fianance cost</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Prepayment Penalty</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Gross Proceeds from Re-Fi</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Net Proceeds to LP</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="units">
+                        <label>Net Proceeds to GP</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Total Cash to LP/GP</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Sale</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Sales Cost</label>
+                        <app-editable-field [value]="10" (calculateValues) = calculate($event)></app-editable-field>
+                    </div>
+                    <div class="units">
+                        <label>Net Proceeds from Sale</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="units">
+                        <label>Net Proceeds from Sale</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Net Proceeds to LP</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Net Proceeds to GP</label>
+                        <span></span>
+                    </div>
+                    <div class="units">
+                        <label>Total Cash to LP/GP</label>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+      </mat-tab-group>
+</div>
