@@ -121,6 +121,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.red_border {
+  border-color: red;
+}
+
 mat-select {
     border-radius: 0.375rem;
     border: 1px solid;
@@ -137,5 +141,14 @@ mat-select {
             .mat-mdc-select-arrow-wrapper {
             margin-right: 12px;
             }   
+            .mat-mdc-select-value-text {
+              text-align: center;
+                  width: 100%;
+                  display: block;
+                  height: 100%;
+              }
+              .mat-mdc-select-trigger {
+              height: 100%;
+              }
     }
 }

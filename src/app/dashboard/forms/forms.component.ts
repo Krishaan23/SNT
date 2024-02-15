@@ -12,6 +12,7 @@ export class FormsComponent implements OnInit {
   public dashboardForm: FormGroup = new FormGroup({});
   public asset_types = ASSET_TYPE;
   public summaryEnable:boolean = false;
+  public submitted:boolean = false;
   public result: any = {};
   constructor() {
 
@@ -72,18 +73,25 @@ export class FormsComponent implements OnInit {
   }
 
   onCalculate() {
+    this.submitted = true;
+    if(!this.dashboardForm.valid) {
+      this.dashboardForm.markAllAsTouched();
+      return;
+    }
     this.summaryEnable = true;
     this.result = this.dashboardForm.value;
   }
 
   onReset() {
+    this.submitted = false;
     this.summaryEnable = false;
     this.dashboardForm.reset();
+    this.dashboardForm.patchValue({asset_type: 0})
   }
 
   createForm() {
     this.dashboardForm = new FormGroup({
-      asset_type: new FormControl('', [Validators.required]),
+      asset_type: new FormControl(0, [Validators.required]),
       asking_price: new FormControl('', [Validators.required]),
       units: new FormControl('', [Validators.required]),
       down_payment: new FormControl('', [Validators.required]),

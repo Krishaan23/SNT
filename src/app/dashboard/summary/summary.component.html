@@ -36,7 +36,7 @@
                     <div class="units">
                         <label>Interest Only</label>
                         <app-editable-field [key]="'interest_only'" [value]="summary.interest_only" (calculateValues) = changeEmitter($event)></app-editable-field>
-                        {{result.interest_only}}
+                        {{result.interest_only}} months
                     </div>
                     <div class="units">
                         <label>Acquisition Fee</label>
@@ -45,6 +45,7 @@
                     </div>
                     <div class="units">
                         <label>Eff Gross Income</label>
+                        <app-editable-field [key]="'eff_gross_income'" [value]="summary.eff_gross_income" (calculateValues) = changeEmitter($event)></app-editable-field>
                         <span>{{result.eff_gross_income}}</span>
                     </div>
                     <div class="units">
@@ -259,4 +260,7 @@
             </div>
         </mat-tab>
       </mat-tab-group>
+      <div>
+        <button type="button" class="final-btn" (click)="onSubmit()">Submit</button>
+      </div>
 </div>

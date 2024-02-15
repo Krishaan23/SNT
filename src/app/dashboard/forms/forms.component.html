@@ -4,8 +4,6 @@
     <form class="form-groups" [formGroup]="dashboardForm" (submit)="onCalculate()" (reset)="onReset()">
       <div class="col-1">
         <div class="form-fields">
-          <!-- <label class="form-labels required-field" for="askingPrice">Asset Type: </label>
-          <input id="askingPrice" type="text" formControlName="asset_type" /> -->
             <mat-label class="form-labels required-field" for="select-field">Asset Type:</mat-label>
             <mat-select id="select-field" formControlName="asset_type" placeholder="Select a Asset Type">
                 <mat-option *ngFor="let type of asset_types" [value]="type.value">{{type.label}}</mat-option>
@@ -14,28 +12,28 @@
   
         <div class="form-fields">
           <label class="form-labels required-field"  for="askingPrice">Asking Price: </label>
-          <input placeholder="Asking Price" id="askingPrice" type="number" min="0" step="0.01" (blur)="restrictInputValues('asking_price')" formControlName="asking_price" />
+          <input [class.red_border] = "(dashboardForm.get('asking_price')?.pristine && submitted) || dashboardForm.get('asking_price')?.dirty  && dashboardForm.get('asking_price')?.hasError('required')" placeholder="Asking Price" id="askingPrice" type="number" min="0" step="0.01" (blur)="restrictInputValues('asking_price')" formControlName="asking_price" />
           <!-- <img src="src\assets\img\dollar.png"> -->
           <div class="text-danger"
-          *ngIf="dashboardForm.get('asking_price')?.dirty  && dashboardForm.get('asking_price')?.hasError('required')">
+          *ngIf="(dashboardForm.get('asking_price')?.pristine && submitted) || dashboardForm.get('asking_price')?.dirty  && dashboardForm.get('asking_price')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="units">Units: </label>
-          <input placeholder="Units" id="units" type="number" min=0 (blur)="restrictInputValues('units')" formControlName="units" />
+          <input [class.red_border]="(dashboardForm.get('units')?.pristine && submitted) ||dashboardForm.get('units')?.dirty  && dashboardForm.get('units')?.hasError('required')" placeholder="Units" id="units" type="number" min=0 (blur)="restrictInputValues('units')" formControlName="units" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('units')?.dirty  && dashboardForm.get('units')?.hasError('required')">
+          *ngIf="(dashboardForm.get('units')?.pristine && submitted) ||dashboardForm.get('units')?.dirty  && dashboardForm.get('units')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="down_payment">Down Payment: </label>
-          <input placeholder="Down Payment" id="down_payment" type="number" min=0 (blur)="restrictInputValues('down_payment')" formControlName="down_payment" />
+          <input [class.red_border]="(dashboardForm.get('down_payment')?.pristine && submitted) || dashboardForm.get('down_payment')?.dirty  && dashboardForm.get('down_payment')?.hasError('required')" placeholder="Down Payment" id="down_payment" type="number" min=0 (blur)="restrictInputValues('down_payment')" formControlName="down_payment" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('down_payment')?.dirty  && dashboardForm.get('down_payment')?.hasError('required')">
+          *ngIf="(dashboardForm.get('down_payment')?.pristine && submitted) || dashboardForm.get('down_payment')?.dirty  && dashboardForm.get('down_payment')?.hasError('required')">
           This field is required.
            </div>
         </div>
@@ -43,36 +41,36 @@
       <div class="col-2">
         <div class="form-fields">
           <label class="form-labels required-field" for="int_months">Interset Only Months: </label>
-          <input placeholder="Intrest only in Months" id="int_months" type="number" min=0 (blur)="restrictInputValues('int_months')" formControlName="int_months" />
+          <input [class.red_border]="(dashboardForm.get('int_months')?.pristine && submitted) || dashboardForm.get('int_months')?.dirty  && dashboardForm.get('int_months')?.hasError('required')" placeholder="Intrest only in Months" id="int_months" type="number" min=0 (blur)="restrictInputValues('int_months')" formControlName="int_months" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('int_months')?.dirty  && dashboardForm.get('int_months')?.hasError('required')">
+          *ngIf="(dashboardForm.get('int_months')?.pristine && submitted) || dashboardForm.get('int_months')?.dirty  && dashboardForm.get('int_months')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="repairs">Repairs: </label>
-          <input placeholder="Repairs" id="repairs" type="number" min=0 (blur)="restrictInputValues('repairs')" formControlName="repairs" />
+          <input [class.red_border]="(dashboardForm.get('repairs')?.pristine && submitted) || dashboardForm.get('repairs')?.dirty  && dashboardForm.get('repairs')?.hasError('required')" placeholder="Repairs" id="repairs" type="number" min=0 (blur)="restrictInputValues('repairs')" formControlName="repairs" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('repairs')?.dirty  && dashboardForm.get('repairs')?.hasError('required')">
+          *ngIf="(dashboardForm.get('repairs')?.pristine && submitted) || dashboardForm.get('repairs')?.dirty  && dashboardForm.get('repairs')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="op_reservers">Operating Reserves: </label>
-          <input placeholder="Operational Reserves" id="op_reservers" type="number" min=0 (blur)="restrictInputValues('op_reservers')" formControlName="op_reservers" />
+          <input [class.red_border]="(dashboardForm.get('op_reservers')?.pristine && submitted) || dashboardForm.get('op_reservers')?.dirty  && dashboardForm.get('op_reservers')?.hasError('required')" placeholder="Operational Reserves" id="op_reservers" type="number" min=0 (blur)="restrictInputValues('op_reservers')" formControlName="op_reservers" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('op_reservers')?.dirty  && dashboardForm.get('op_reservers')?.hasError('required')">
+          *ngIf="(dashboardForm.get('op_reservers')?.pristine && submitted) || dashboardForm.get('op_reservers')?.dirty  && dashboardForm.get('op_reservers')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="gross_income">Effective Gross Income: </label>
-          <input placeholder="Effective Gross Income" id="gross_income" type="number" min=0 (blur)="restrictInputValues('gross_income')" formControlName="gross_income" />
+          <input [class.red_border]="(dashboardForm.get('gross_income')?.pristine && submitted) || dashboardForm.get('gross_income')?.dirty  && dashboardForm.get('gross_income')?.hasError('required')" placeholder="Effective Gross Income" id="gross_income" type="number" min=0 (blur)="restrictInputValues('gross_income')" formControlName="gross_income" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('gross_income')?.dirty  && dashboardForm.get('gross_income')?.hasError('required')">
+          *ngIf="(dashboardForm.get('gross_income')?.pristine && submitted) || dashboardForm.get('gross_income')?.dirty  && dashboardForm.get('gross_income')?.hasError('required')">
           This field is required.
            </div>
         </div>
@@ -81,36 +79,36 @@
       <div class="col-3">
         <div class="form-fields">
           <label class="form-labels required-field" for="total_expenses">Total Expenses: </label>
-          <input placeholder="Total Expenses" id="total_expenses" type="number" min=0 (blur)="restrictInputValues('total_expenses')" formControlName="total_expenses" />
+          <input [class.red_border]="(dashboardForm.get('total_expenses')?.pristine && submitted) || dashboardForm.get('total_expenses')?.dirty  && dashboardForm.get('total_expenses')?.hasError('required')" placeholder="Total Expenses" id="total_expenses" type="number" min=0 (blur)="restrictInputValues('total_expenses')" formControlName="total_expenses" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('total_expenses')?.dirty  && dashboardForm.get('total_expenses')?.hasError('required')">
+          *ngIf="(dashboardForm.get('total_expenses')?.pristine && submitted) || dashboardForm.get('total_expenses')?.dirty  && dashboardForm.get('total_expenses')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="intreset_rates">Interset Rates: </label>
-          <input placeholder="Interset Rates" id="intreset_rates" type="number" min=0 (blur)="restrictInputValues('intreset_rates')" formControlName="intreset_rates" />
+          <input [class.red_border]="(dashboardForm.get('intreset_rates')?.pristine && submitted) || dashboardForm.get('intreset_rates')?.dirty  && dashboardForm.get('intreset_rates')?.hasError('required')" placeholder="Interset Rates" id="intreset_rates" type="number" min=0 (blur)="restrictInputValues('intreset_rates')" formControlName="intreset_rates" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('intreset_rates')?.dirty  && dashboardForm.get('intreset_rates')?.hasError('required')">
+          *ngIf="(dashboardForm.get('intreset_rates')?.pristine && submitted) || dashboardForm.get('intreset_rates')?.dirty  && dashboardForm.get('intreset_rates')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="amortization">Amortization Years: </label>
-          <input placeholder="Amortization Years" id="amortization" type="number" min=0 (blur)="restrictInputValues('amortization')" formControlName="amortization" />
+          <input [class.red_border]="(dashboardForm.get('amortization')?.pristine && submitted) || dashboardForm.get('amortization')?.dirty  && dashboardForm.get('amortization')?.hasError('required')" placeholder="Amortization Years" id="amortization" type="number" min=0 (blur)="restrictInputValues('amortization')" formControlName="amortization" />
           <div class="text-danger"
-          *ngIf="dashboardForm.get('amortization')?.dirty  && dashboardForm.get('amortization')?.hasError('required')">
+          *ngIf="(dashboardForm.get('amortization')?.pristine && submitted) || dashboardForm.get('amortization')?.dirty  && dashboardForm.get('amortization')?.hasError('required')">
           This field is required.
            </div>
         </div>
   
         <div class="form-fields">
           <label class="form-labels required-field" for="market_cap_rate">Market Cap Rate: </label>
-          <input placeholder="Market Cap Rate" id="market_cap_rate" type="number" min=0 (blur)="restrictInputValues('market_cap_rate')" formControlName="market_cap_rate"/>
+          <input [class.red_border]="(dashboardForm.get('market_cap_rate')?.pristine && submitted) || dashboardForm.get('market_cap_rate')?.dirty  && dashboardForm.get('market_cap_rate')?.hasError('required')" placeholder="Market Cap Rate" id="market_cap_rate" type="number" min=0 (blur)="restrictInputValues('market_cap_rate')" formControlName="market_cap_rate"/>
           <div class="text-danger"
-          *ngIf="dashboardForm.get('market_cap_rate')?.dirty  && dashboardForm.get('market_cap_rate')?.hasError('required')">
+          *ngIf="(dashboardForm.get('market_cap_rate')?.pristine && submitted) || dashboardForm.get('market_cap_rate')?.dirty  && dashboardForm.get('market_cap_rate')?.hasError('required')">
           This field is required.
            </div>
         </div>

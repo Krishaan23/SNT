@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'app-summary',
@@ -55,7 +56,7 @@ export class SummaryComponent implements OnInit, OnChanges {
     gross_rent_multiplier:0
   };
 
-  constructor() {}
+  constructor(private excelService: ExcelService) {}
 
   ngOnInit() {
   }
@@ -90,4 +91,10 @@ export class SummaryComponent implements OnInit, OnChanges {
     this.result['fee_to_mgr'] = this.summary['fee_to_mgr'];
     this.result['gross_rent_multiplier'] = 0;
   }
+
+  onSubmit() {
+    const fileName = 'report';
+    this.excelService.exportToExcel([this.result], fileName);
+  }
+
 }
