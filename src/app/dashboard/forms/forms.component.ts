@@ -86,12 +86,11 @@ export class FormsComponent implements OnInit {
     this.submitted = false;
     this.summaryEnable = false;
     this.dashboardForm.reset();
-    this.dashboardForm.patchValue({asset_type: 0})
   }
 
   createForm() {
     this.dashboardForm = new FormGroup({
-      asset_type: new FormControl(0, [Validators.required]),
+      asset_type: new FormControl('', [Validators.required]),
       asking_price: new FormControl('', [Validators.required]),
       units: new FormControl('', [Validators.required]),
       down_payment: new FormControl('', [Validators.required]),

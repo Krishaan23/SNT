@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { SummaryComponent } from './summary/summary.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
 import { EditableFieldComponent } from './editable-field/editable-field.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { EditableFieldComponent } from './editable-field/editable-field.componen
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatIconModule,
     DashboardRoutingModule,
     MatFormFieldModule,
     MatInputModule,
