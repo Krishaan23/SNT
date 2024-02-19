@@ -11,6 +11,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { EditableFieldComponent } from './editable-field/editable-field.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EditableFieldComponent } from './editable-field/editable-field.componen
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatTableModule,
     MatIconModule,
     DashboardRoutingModule,
     MatFormFieldModule,

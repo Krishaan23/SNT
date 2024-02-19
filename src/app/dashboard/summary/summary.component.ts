@@ -1,15 +1,219 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ExcelService } from 'src/app/services/excel.service';
+
+export interface DataElements {
+  name: string;
+  key: string;
+  position: number;
+  editable: boolean;
+  value: number;
+  action: boolean;
+};
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
+
 export class SummaryComponent implements OnInit, OnChanges {
 
   @Input() enabled: any;
   @Input() formValue: any;
+  public displayedColumns: string[] = ['position', 'name', 'value', 'action'];
+  public dataElements: DataElements[] = [
+    {
+      position: 1,
+      name: 'Purchase Price',
+      key: 'purchase_price',
+      value: 0,
+      editable: false,
+      action: true
+    },
+    {
+      position: 2,
+      name: 'Units',
+      key: 'no_of_units',
+      value: 0,
+      editable: false,
+      action: false
+    },
+    {
+      position: 3,
+      name: 'EMD',
+      key: 'emd',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 4,
+      name: 'Loan',
+      key: 'loan',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 5,
+      name: 'Intrest Rate',
+      key: 'interest_rate',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 6,
+      name: 'Amortization',
+      key: 'amortization',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 7,
+      name: 'Interest Only',
+      key: 'interest_only',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 8,
+      name: 'Acquisition Fee',
+      key: 'acquisition_fee',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 9,
+      name: 'Effective Gross Income',
+      key: 'eff_gross_income',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 10,
+      name: 'Total Expenses',
+      key: 'total_expenses',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 11,
+      name: 'NOI',
+      key: 'noi',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 12,
+      name: 'Debt Service',
+      key: 'debt_service',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 13,
+      name: 'Debt Service Ratio',
+      key: 'debt_service_ratio',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 14,
+      name: 'Cash Flow Debt Service',
+      key: 'cash_flow_debt_service',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 15,
+      name: 'Cash Flow Debt Service',
+      key: 'cash_flow_debt_service',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 16,
+      name: 'Lp Equity Share',
+      key: 'lp_equity_share',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 17,
+      name: 'Gp Equity Share',
+      key: 'gp_equity_share',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 18,
+      name: 'Preferred Return to LP',
+      key: 'preff_return_to_lp',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 19,
+      name: 'Asset Managment Fee',
+      key: 'asset_mgmt_fee',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 20,
+      name: 'Fee to Mgr',
+      key: 'fee_to_mgr',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 21,
+      name: 'Gross Rent Multiplier',
+      key: 'gross_rent_multiplier',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    // {
+    //   position: 22,
+    //   name: 'Units',
+    //   key: 'no_of_units',
+    //   value: 0,
+    //   action: false
+    // },
+    // {
+    //   position: 23,
+    //   name: 'Units',
+    //   key: 'no_of_units',
+    //   value: 0,
+    //   action: false
+    // },
+    // {
+    //   position: 24,
+    //   name: 'Units',
+    //   key: 'no_of_units',
+    //   value: 0,
+    //   action: false
+    // }
+  ];
+  public dataSource = new MatTableDataSource(this.dataElements);
   public summary:any = {
     purchase_price: 0,
     no_of_units: 0,
@@ -61,6 +265,23 @@ export class SummaryComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
+  changeToInput(key: string) {
+    const ele = this.dataElements.find(a => a.key == key);
+    if(ele && ele.action) {
+      ele.editable = !!!ele.editable
+    }
+  }
+
+  onEnter(key: string) {
+    console.log('RESULT', this.result);
+    const ele = this.dataElements.find(a => a.key == key);
+    if(ele) {
+      ele.editable = false;
+      ele.value = this.result[key] ?? 0
+    }
+    this.calculateSummary();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.calculateSummary();
   }
@@ -68,6 +289,11 @@ export class SummaryComponent implements OnInit, OnChanges {
   changeEmitter(data:any) {
     this.summary[data.key] = data.value;
     this.calculateSummary();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   calculateSummary() {

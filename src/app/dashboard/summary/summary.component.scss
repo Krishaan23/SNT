@@ -4,7 +4,7 @@
 
 .summary-tab {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        // grid-template-columns: 1fr 1fr 1fr 1fr;
         .units {
             padding: 3em;
             display: flex;
@@ -15,6 +15,14 @@
             border-radius: 20px;
             margin: 1em;
         }
+}
+
+.cursor-none {
+    cursor: no-drop;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .acquisition-tab {
