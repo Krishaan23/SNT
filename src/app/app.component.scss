@@ -4,7 +4,8 @@
 .main-container{
     background-color: white;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
     padding-right: 100px;
     padding-left: 100px;
     margin-right: 100px;
