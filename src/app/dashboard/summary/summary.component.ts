@@ -29,7 +29,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       key: 'purchase_price',
       value: 0,
       editable: false,
-      action: true
+      action: false
     },
     {
       position: 2,
@@ -61,7 +61,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       key: 'interest_rate',
       editable: false,
       value: 0,
-      action: false
+      action: true
     },
     {
       position: 6,
@@ -69,7 +69,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       key: 'amortization',
       editable: false,
       value: 0,
-      action: false
+      action: true
     },
     {
       position: 7,
@@ -273,12 +273,13 @@ export class SummaryComponent implements OnInit, OnChanges {
     console.log('ELE', ele);
   }
 
-  onEnter(key: string) {
-    console.log('RESULT', this.result);
+  onEnter(event: any, key: string) {
     const ele = this.dataElements.find(a => a.key == key);
+    this.summary[key] = Number(event?.target?.value)
+    console.log('RESULT', this.result, event);
     if(ele) {
       ele.editable = false;
-      ele.value = this.result[key] ?? 0
+      ele.value = this.summary[key] ?? 0
     }
     this.calculateSummary();
   }
@@ -298,24 +299,24 @@ export class SummaryComponent implements OnInit, OnChanges {
   }
 
   calculateSummary() {
-    this.result['purchase_price'] = this.formValue['asking_price'];
-    this.result['no_of_units'] = this.formValue['units'];
+    this.result['purchase_price'] = this.formValue['asking_price'] ?? 0;
+    this.result['no_of_units'] = this.formValue['units'] ?? 0;
     this.result['emd'] = this.result['purchase_price'] * this.summary['emd'];
-    this.result['loan'] = this.summary['loan'];
+    this.result['loan'] = this.summary['loan'] ?? 0;
     this.result['interest_rate'] = this.result['loan'] ? this.summary['interest_rate']: 0;
     this.result['amortization'] = this.result['loan'] ? this.summary['amortization']: 0;
     this.result['acquisition_fee'] = this.summary['acquisition_fee'] ? (this.summary['acquisition_fee'] * 0.01 * this.result['purchase_price']) : 0;
-    this.result['eff_gross_income'] = this.summary['eff_gross_income'];
-    this.result['total_expenses'] = this.summary['total_expenses'];
-    this.result['lp_equity_share'] = this.summary['lp_equity_share'];
+    this.result['eff_gross_income'] = this.summary['eff_gross_income'] ?? 0;
+    this.result['total_expenses'] = this.summary['total_expenses'] ?? 0;
+    this.result['lp_equity_share'] = this.summary['lp_equity_share'] ?? 0;
     this.result['debt_service'] = this.summary['debt_service'];
     this.result['noi'] = this.result['eff_gross_income'] - this.result['total_expenses'];
     this.result['debt_service_ratio'] = this.result['purchase_price'] ? this.result['debt_service'] ? (this.result['noi'] / this.result['debt_service'])  : 0 : 0;
     this.result['cash_flow_debt_service'] = this.result['noi'] - this.result['debt_service'];
-    this.result['gp_equity_share'] = 1 - this.summary['lp_equity_share'];
-    this.result['preff_return_to_lp'] = this.summary['preff_return_to_lp'];
-    this.result['asset_mgmt_fee'] = this.summary['asset_mgmt_fee'];
-    this.result['fee_to_mgr'] = this.summary['fee_to_mgr'];
+    this.result['gp_equity_share'] = 1 - this.summary['lp_equity_share'] ?? 0;
+    this.result['preff_return_to_lp'] = this.summary['preff_return_to_lp'] ?? 0;
+    this.result['asset_mgmt_fee'] = this.summary['asset_mgmt_fee'] ?? 0;
+    this.result['fee_to_mgr'] = this.summary['fee_to_mgr'] ?? 0;
     this.result['gross_rent_multiplier'] = 0;
   }
 
