@@ -19,10 +19,15 @@
 
 .cursor-none {
     cursor: no-drop;
+    opacity: 40%;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.shade-icon {
+    opacity: 40%;
 }
 
 .acquisition-tab {

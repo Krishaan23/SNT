@@ -270,6 +270,7 @@ export class SummaryComponent implements OnInit, OnChanges {
     if(ele && ele.action) {
       ele.editable = !!!ele.editable
     }
+    console.log('ELE', ele);
   }
 
   onEnter(key: string) {
