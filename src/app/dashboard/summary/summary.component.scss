@@ -60,8 +60,8 @@ label {
     text-wrap: nowrap;
 }
 .endgame-plan {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     .units {
         padding: 3em;
         display: flex;

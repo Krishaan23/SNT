@@ -21,7 +21,7 @@ export class SummaryComponent implements OnInit, OnChanges {
 
   @Input() enabled: any;
   @Input() formValue: any;
-  public displayedColumns: string[] = ['position', 'name', 'value', 'action'];
+  public displayedColumns: string[] = ['name', 'value', 'action'];
   public dataElements: DataElements[] = [
     {
       position: 1,
@@ -213,7 +213,244 @@ export class SummaryComponent implements OnInit, OnChanges {
     //   action: false
     // }
   ];
+  public acquisitionDataElements: DataElements[] = [
+    {
+      position: 1,
+      name: 'Down payment',
+      key: 'down_payment',
+      value: 0,
+      editable: false,
+      action: false
+    },
+    {
+      position: 2,
+      name: 'Closing cost',
+      key: 'closing_cost',
+      value: 0,
+      editable: false,
+      action: false
+    },
+    {
+      position: 3,
+      name: 'Acquistion Fee',
+      key: 'acquisition_fee',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 4,
+      name: 'Repair',
+      key: 'repair',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 5,
+      name: 'Total Capital',
+      key: 'total_capital',
+      editable: false,
+      value: 0,
+      action: true
+    }
+  ];
+  public endGameDataElements: DataElements[] = [
+    {
+      position: 1,
+      name: 'Cash out Re-Finance at Year',
+      key: 'cash_out_re_finance_at_year',
+      value: 0,
+      editable: false,
+      action: false
+    },
+    {
+      position: 2,
+      name: 'Closing cost',
+      key: 'closing_cost',
+      value: 0,
+      editable: false,
+      action: false
+    },
+    {
+      position: 3,
+      name: 'After Sale',
+      key: 'after_sale',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 4,
+      name: 'Amount Paid to LP',
+      key: 'amount_paid_to_lp',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 5,
+      name: 'Amount Paid to GP',
+      key: 'amount_paid_to_gp',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 6,
+      name: 'IRR',
+      key: 'irr',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 7,
+      name: 'Cash on Cash Average',
+      key: 'cash_on_cash_average',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 8,
+      name: 'Refianance',
+      key: 're_fianance',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 9,
+      name: 'Refianance  LTV',
+      key: 're_fianance_ltv',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 10,
+      name: 'Interest Rate',
+      key: 'interest_rate',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 11,
+      name: 'Amortization',
+      key: 'amortization',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 12,
+      name: 'Re Fianance Cost',
+      key: 're_fianance_cost',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 13,
+      name: 'Prepayment Penalty',
+      key: 'pre_payment_penalty',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 14,
+      name: 'Gross Proceeds from Re-Fi',
+      key: 'gross_proceeds',
+      editable: false,
+      value: 0,
+      action: false
+    },
+    {
+      position: 15,
+      name: 'Net Proceeds to LP',
+      key: 'net_proceeds_lp',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 16,
+      name: 'Net Proceeds to GP',
+      key: 'net_proceeds_gp',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 17,
+      name: 'Total Cash to LP/GP',
+      key: 'total_cash',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 18,
+      name: 'Sale',
+      key: 'sales',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 19,
+      name: 'Sales Cost',
+      key: 'sales_cost',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 20,
+      name: 'Net Proceeds from Sale',
+      key: 'net_proceeds_sale',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 21,
+      name: 'Net Proceeds to LP',
+      key: 'net_proceeds_lp1',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 22,
+      name: 'Net Proceeds to gP',
+      key: 'net_proceeds_gp1',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 23,
+      name: 'Total Cash to LP/GP',
+      key: 'total_cash1',
+      editable: false,
+      value: 0,
+      action: true
+    },
+    {
+      position: 24,
+      name: 'Net Proceeds from Sale',
+      key: 'net_proceeds_sale1',
+      editable: false,
+      value: 0,
+      action: true
+    }
+  ];
   public dataSource = new MatTableDataSource(this.dataElements);
+  public acquistionDataSource = new MatTableDataSource(this.acquisitionDataElements);
   public summary:any = {
     purchase_price: 0,
     no_of_units: 0,
@@ -260,6 +497,76 @@ export class SummaryComponent implements OnInit, OnChanges {
     gross_rent_multiplier:0
   };
 
+  public acquisition:any = {
+    down_payment: 0,
+    closing_cost: 0,
+    acquisition_fee: 0,
+    repair: 0,
+    total_capital: 0
+  };
+
+  public acquisitionResult:any = {
+    down_payment: 0,
+    closing_cost: 0,
+    acquisition_fee: 0,
+    repair: 0,
+    total_capital: 0
+  };
+
+  public endGame:any = {
+    cash_out_re_finance_at_year: 0,
+    closing_cost: 0,
+    after_sale: 0,
+    amount_paid_to_lp: 0,
+    amount_paid_to_gp: 0,
+    irr: 0,
+    cash_on_cash_average:0,
+    re_fianance:0,
+    re_fianance_ltv:0,
+    interest_rate: 0,
+    amortization:0,
+    re_fianance_cost: 0,
+    pre_payment_penalty:0,
+    gross_proceeds:0,
+    net_proceeds_lp:0,
+    net_proceeds_gp:0,
+    total_cash:0,
+    sales:0,
+    sales_cost:0,
+    net_proceeds_sale:0,
+    net_proceeds_lp1:0,
+    net_proceeds_gp1:0,
+    total_cash1:0,
+    net_proceeds_sale1:0,
+  };
+
+  public endGameResult:any = {
+    cash_out_re_finance_at_year: 0,
+    closing_cost: 0,
+    after_sale: 0,
+    amount_paid_to_lp: 0,
+    amount_paid_to_gp: 0,
+    irr: 0,
+    cash_on_cash_average:0,
+    re_fianance:0,
+    re_fianance_ltv:0,
+    interest_rate: 0,
+    amortization:0,
+    re_fianance_cost: 0,
+    pre_payment_penalty:0,
+    gross_proceeds:0,
+    net_proceeds_lp:0,
+    net_proceeds_gp:0,
+    total_cash:0,
+    sales:0,
+    sales_cost:0,
+    net_proceeds_sale:0,
+    net_proceeds_lp1:0,
+    net_proceeds_gp1:0,
+    total_cash1:0,
+    net_proceeds_sale1:0,
+  };
+
   constructor(private excelService: ExcelService) {}
 
   ngOnInit() {
@@ -267,6 +574,20 @@ export class SummaryComponent implements OnInit, OnChanges {
 
   changeToInput(key: string) {
     const ele = this.dataElements.find(a => a.key == key);
+    if(ele && ele.action) {
+      ele.editable = !!!ele.editable
+    }
+    console.log('ELE', ele);
+  }
+  acqusitionInput(key: string) {
+    const ele = this.acquisitionDataElements.find(a => a.key == key);
+    if(ele && ele.action) {
+      ele.editable = !!!ele.editable
+    }
+    console.log('ELE', ele);
+  }
+  endGameInput(key: string) {
+    const ele = this.endGameDataElements.find(a => a.key == key);
     if(ele && ele.action) {
       ele.editable = !!!ele.editable
     }
@@ -282,6 +603,24 @@ export class SummaryComponent implements OnInit, OnChanges {
       ele.value = this.summary[key] ?? 0
     }
     this.calculateSummary();
+  }
+  onAcqusitionEnter(event: any, key: string) {
+    const ele = this.acquisitionDataElements.find(a => a.key == key);
+    this.summary[key] = Number(event?.target?.value)
+    console.log('RESULT', this.result, event, ele);
+    if(ele) {
+      ele.editable = false;
+      ele.value = this.summary[key] ?? 0
+    }
+  }
+  onEndGameEnter(event: any, key: string) {
+    const ele = this.endGameDataElements.find(a => a.key == key);
+    this.summary[key] = Number(event?.target?.value)
+    console.log('RESULT', this.result, event, ele);
+    if(ele) {
+      ele.editable = false;
+      ele.value = this.summary[key] ?? 0
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
