@@ -73,6 +73,10 @@ label {
     }
 }
 .final-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 10em;
+    z-index: 999999;
     height: 3em;
     width: 10em;
     cursor: pointer;
