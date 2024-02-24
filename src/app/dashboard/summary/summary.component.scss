@@ -4,7 +4,8 @@
 
 .summary-tab {
         display: grid;
-        // grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
         .units {
             padding: 3em;
             display: flex;
@@ -47,6 +48,20 @@ input {
 
 .acquisition-tab {
     padding: 3em;
+    .units {
+        padding: 3em;
+        background-color: #c1d961;
+        width: 20%;
+        border-radius: 20px;
+        margin: 1em;
+        padding: 3em;
+    }
+}
+.endgame-tab {
+    padding: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
     .units {
         padding: 3em;
         background-color: #c1d961;

@@ -3,7 +3,7 @@
         <mat-tab label="Summary"> 
             <div class="summary-tab">
                   
-                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataElements1" class="mat-elevation-z8">
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="name">
@@ -24,10 +24,42 @@
                       <th mat-header-cell *matHeaderCellDef> Action </th>
                       <td mat-cell *matCellDef="let element" [ngClass]="element.action ? 'cursor-pointer' : 'cursor-none'">
                         <div *ngIf="!element.editable">
-                            <mat-icon (click)="changeToInput(element.key)">edit</mat-icon> 
+                            <mat-icon (click)="changeToInput(element.key, 1)">edit</mat-icon> 
                         </div>
                         <div *ngIf="element.editable">
-                            <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEnter($event, element.key)"/> 
+                            <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEnter($event, element.key, 1)"/> 
+                        </div>
+                      </td>
+                    </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <table mat-table [dataSource]="dataElements2" class="mat-elevation-z8">
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef> Metric Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+                  
+                    <!-- Value Column -->
+                    <ng-container matColumnDef="value">
+                      <th mat-header-cell *matHeaderCellDef> Metric Value </th>
+                      <td mat-cell *matCellDef="let element" > 
+                        <span> {{result[element.key] ?? 0}}</span>
+                     </td>
+                    </ng-container>
+                  
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef> Action </th>
+                      <td mat-cell *matCellDef="let element" [ngClass]="element.action ? 'cursor-pointer' : 'cursor-none'">
+                        <div *ngIf="!element.editable">
+                            <mat-icon (click)="changeToInput(element.key, 2)">edit</mat-icon> 
+                        </div>
+                        <div *ngIf="element.editable">
+                            <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEnter($event, element.key, 2)"/> 
                         </div>
                       </td>
                     </ng-container>
@@ -159,7 +191,7 @@
         <mat-tab label="Acquisition Expenses"> 
             <div class="acquisition">
                 <div class="acquisition-tab">
-                    <table mat-table [dataSource]="acquistionDataSource" class="mat-elevation-z8">
+                    <table mat-table [dataSource]="acquisitionDataElements" class="mat-elevation-z8">
                   
                         <!-- Name Column -->
                         <ng-container matColumnDef="name">
@@ -217,8 +249,8 @@
         </mat-tab>
         <mat-tab label="End Game Plan"> 
             <div class="endgame-plan">
-                <div class="acquisition-tab">
-                    <table mat-table [dataSource]="endGameDataElements" class="mat-elevation-z8">
+                <div class="endgame-tab">
+                    <table mat-table [dataSource]="endGameDataElements1" class="mat-elevation-z8">
                     
                         <!-- Name Column -->
                         <ng-container matColumnDef="name">
@@ -239,10 +271,10 @@
                         <th mat-header-cell *matHeaderCellDef> Action </th>
                         <td mat-cell *matCellDef="let element" [ngClass]="element.action ? 'cursor-pointer' : 'cursor-none'">
                             <div *ngIf="!element.editable">
-                                <mat-icon (click)="endGameInput(element.key)">edit</mat-icon> 
+                                <mat-icon (click)="endGameInput(element.key, 1)">edit</mat-icon> 
                             </div>
                             <div *ngIf="element.editable">
-                                <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEndGameEnter($event, element.key)"/> 
+                                <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEndGameEnter($event, element.key, 1)"/> 
                             </div>
                         </td>
                         </ng-container>
@@ -250,6 +282,38 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
+                    <table mat-table [dataSource]="endGameDataElements2" class="mat-elevation-z8">
+                    
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Metric Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+                    
+                        <!-- Value Column -->
+                        <ng-container matColumnDef="value">
+                        <th mat-header-cell *matHeaderCellDef> Metric Value </th>
+                        <td mat-cell *matCellDef="let element" > 
+                            <span> {{result[element.key] ?? 0}}</span>
+                        </td>
+                        </ng-container>
+                    
+                        <!-- Action Column -->
+                        <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element" [ngClass]="element.action ? 'cursor-pointer' : 'cursor-none'">
+                            <div *ngIf="!element.editable">
+                                <mat-icon (click)="endGameInput(element.key, 2)">edit</mat-icon> 
+                            </div>
+                            <div *ngIf="element.editable">
+                                <input [placeholder]="element.key" id="element.key" type="number" min=0 [(ngModel)]="result[element.key]" (keyup.enter)="onEndGameEnter($event, element.key, 2)"/> 
+                            </div>
+                        </td>
+                        </ng-container>
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>    
                   </div>
                 <!-- <div class="col-1">
                     <div class="units">

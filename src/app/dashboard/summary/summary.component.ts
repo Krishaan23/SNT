@@ -22,7 +22,7 @@ export class SummaryComponent implements OnInit, OnChanges {
   @Input() enabled: any;
   @Input() formValue: any;
   public displayedColumns: string[] = ['name', 'value', 'action'];
-  public dataElements: DataElements[] = [
+  public dataElements1: DataElements[] = [
     {
       position: 1,
       name: 'Purchase Price',
@@ -118,7 +118,9 @@ export class SummaryComponent implements OnInit, OnChanges {
       editable: false,
       value: 0,
       action: true
-    },
+    }
+  ];
+  public dataElements2: DataElements[] = [
     {
       position: 13,
       name: 'Debt Service Ratio',
@@ -137,14 +139,6 @@ export class SummaryComponent implements OnInit, OnChanges {
     },
     {
       position: 15,
-      name: 'Cash Flow Debt Service',
-      key: 'cash_flow_debt_service',
-      editable: false,
-      value: 0,
-      action: true
-    },
-    {
-      position: 16,
       name: 'Lp Equity Share',
       key: 'lp_equity_share',
       editable: false,
@@ -152,7 +146,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     },
     {
-      position: 17,
+      position: 16,
       name: 'Gp Equity Share',
       key: 'gp_equity_share',
       editable: false,
@@ -160,7 +154,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     },
     {
-      position: 18,
+      position: 17,
       name: 'Preferred Return to LP',
       key: 'preff_return_to_lp',
       editable: false,
@@ -168,7 +162,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     },
     {
-      position: 19,
+      position: 18,
       name: 'Asset Managment Fee',
       key: 'asset_mgmt_fee',
       editable: false,
@@ -176,7 +170,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     },
     {
-      position: 20,
+      position: 19,
       name: 'Fee to Mgr',
       key: 'fee_to_mgr',
       editable: false,
@@ -184,34 +178,46 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     },
     {
-      position: 21,
+      position: 20,
       name: 'Gross Rent Multiplier',
       key: 'gross_rent_multiplier',
       editable: false,
       value: 0,
       action: true
     },
-    // {
-    //   position: 22,
-    //   name: 'Units',
-    //   key: 'no_of_units',
-    //   value: 0,
-    //   action: false
-    // },
-    // {
-    //   position: 23,
-    //   name: 'Units',
-    //   key: 'no_of_units',
-    //   value: 0,
-    //   action: false
-    // },
-    // {
-    //   position: 24,
-    //   name: 'Units',
-    //   key: 'no_of_units',
-    //   value: 0,
-    //   action: false
-    // }
+    {
+      position: 21,
+      name: 'Cash on Cash return Avg',
+      key: 'cash_on_cash_return_avg',
+      value: 0,
+      editable: false,
+      action: true,
+      
+    },
+    {
+      position: 22,
+      name: 'Average Annual Return',
+      key: 'average_annual_return',
+      value: 0,
+      editable: false,
+      action: true
+    },
+    {
+      position: 23,
+      name: 'IRR',
+      key: 'irr',
+      value: 0,
+      editable: false,
+      action: true
+    },
+    {
+      position: 24,
+      name: 'Total Returns',
+      key: 'total_returns',
+      value: 0,
+      editable: false,
+      action: true
+    }
   ];
   public acquisitionDataElements: DataElements[] = [
     {
@@ -255,7 +261,7 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     }
   ];
-  public endGameDataElements: DataElements[] = [
+  public endGameDataElements1: DataElements[] = [
     {
       position: 1,
       name: 'Cash out Re-Finance at Year',
@@ -351,7 +357,9 @@ export class SummaryComponent implements OnInit, OnChanges {
       editable: false,
       value: 0,
       action: true
-    },
+    }
+  ];
+  public endGameDataElements2: DataElements[] = [
     {
       position: 13,
       name: 'Prepayment Penalty',
@@ -449,8 +457,6 @@ export class SummaryComponent implements OnInit, OnChanges {
       action: true
     }
   ];
-  public dataSource = new MatTableDataSource(this.dataElements);
-  public acquistionDataSource = new MatTableDataSource(this.acquisitionDataElements);
   public summary:any = {
     purchase_price: 0,
     no_of_units: 0,
@@ -572,9 +578,14 @@ export class SummaryComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  changeToInput(key: string) {
-    const ele = this.dataElements.find(a => a.key == key);
-    if(ele && ele.action) {
+  changeToInput(key: string, val:number = 1) {
+    let ele;
+    if(val == 1) {
+      ele = this.dataElements1.find(a => a.key == key);
+    } else {
+      ele = this.dataElements2.find(a => a.key == key);
+    }   
+     if(ele && ele.action) {
       ele.editable = !!!ele.editable
     }
     console.log('ELE', ele);
@@ -586,16 +597,26 @@ export class SummaryComponent implements OnInit, OnChanges {
     }
     console.log('ELE', ele);
   }
-  endGameInput(key: string) {
-    const ele = this.endGameDataElements.find(a => a.key == key);
+  endGameInput(key: string, val:number = 1) {
+    let ele;
+    if(val == 1) {
+      ele = this.endGameDataElements1.find(a => a.key == key);
+    } else {
+      ele = this.endGameDataElements2.find(a => a.key == key);
+    }
     if(ele && ele.action) {
       ele.editable = !!!ele.editable
     }
     console.log('ELE', ele);
   }
 
-  onEnter(event: any, key: string) {
-    const ele = this.dataElements.find(a => a.key == key);
+  onEnter(event: any, key: string, val:number = 1) {
+    let ele;
+    if(val == 1) {
+      ele = this.dataElements1.find(a => a.key == key);
+    } else {
+      ele = this.dataElements2.find(a => a.key == key);
+    }
     this.summary[key] = Number(event?.target?.value)
     console.log('RESULT', this.result, event);
     if(ele) {
@@ -613,10 +634,14 @@ export class SummaryComponent implements OnInit, OnChanges {
       ele.value = this.summary[key] ?? 0
     }
   }
-  onEndGameEnter(event: any, key: string) {
-    const ele = this.endGameDataElements.find(a => a.key == key);
+  onEndGameEnter(event: any, key: string, val:number = 1) {
+    let ele;
+    if(val == 1) {
+      ele = this.endGameDataElements1.find(a => a.key == key);
+    } else {
+      ele = this.endGameDataElements2.find(a => a.key == key);
+    }
     this.summary[key] = Number(event?.target?.value)
-    console.log('RESULT', this.result, event, ele);
     if(ele) {
       ele.editable = false;
       ele.value = this.summary[key] ?? 0
@@ -630,11 +655,6 @@ export class SummaryComponent implements OnInit, OnChanges {
   changeEmitter(data:any) {
     this.summary[data.key] = data.value;
     this.calculateSummary();
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   calculateSummary() {
@@ -656,7 +676,11 @@ export class SummaryComponent implements OnInit, OnChanges {
     this.result['preff_return_to_lp'] = this.summary['preff_return_to_lp'] ?? 0;
     this.result['asset_mgmt_fee'] = this.summary['asset_mgmt_fee'] ?? 0;
     this.result['fee_to_mgr'] = this.summary['fee_to_mgr'] ?? 0;
-    this.result['gross_rent_multiplier'] = 0;
+    this.result['gross_rent_multiplier'] = this.summary['gross_rent_multiplier'] ?? 0;
+    this.result['cash_on_cash_return_avg'] = this.summary['cash_on_cash_return_avg'] ?? 0;
+    this.result['average_annual_return'] = this.summary['average_annual_return'] ?? 0;
+    this.result['irr'] = this.summary['irr'] ?? 0;
+    this.result['total_returns'] = this.summary['total_returns'] ?? 0;
   }
 
   onSubmit() {
