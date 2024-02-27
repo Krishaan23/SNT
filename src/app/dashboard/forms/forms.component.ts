@@ -12,6 +12,7 @@ export class FormsComponent implements OnInit {
   public dashboardForm: FormGroup = new FormGroup({});
   public asset_types = ASSET_TYPE;
   public summaryEnable:boolean = false;
+  public activeTab:string = 'summary';
   public submitted:boolean = false;
   public result: any = {};
   constructor() {
@@ -21,6 +22,7 @@ export class FormsComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
+
 
   restrictInputValues(keyval: string) {
     if(this.dashboardForm.value && this.dashboardForm.value[keyval]) {

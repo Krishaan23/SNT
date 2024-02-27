@@ -139,6 +139,23 @@ i {
     gap: 1em;
   }
 
+  .toggle-btn {
+    margin-right: 10px;
+    height: 3em;
+    width: 7em;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 0.375rem;
+    background: #c1d961;
+    color: BLACK;
+    justify-content: inherit;
+    align-items: center;
+    &.active {
+      background: #344149;
+      color: white;
+    }
+  }
+
   input {
     border-radius: 0.375rem;
     border: 1px solid;

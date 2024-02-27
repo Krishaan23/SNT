@@ -664,6 +664,7 @@ export class SummaryComponent implements OnInit, OnChanges {
     this.result['loan'] = this.summary['loan'] ?? 0;
     this.result['interest_rate'] = this.result['loan'] ? this.summary['interest_rate']: 0;
     this.result['amortization'] = this.result['loan'] ? this.summary['amortization']: 0;
+    this.result['interest_only'] = this.summary['interest_only'] ?? 0;
     this.result['acquisition_fee'] = this.summary['acquisition_fee'] ? (this.summary['acquisition_fee'] * 0.01 * this.result['purchase_price']) : 0;
     this.result['eff_gross_income'] = this.summary['eff_gross_income'] ?? 0;
     this.result['total_expenses'] = this.summary['total_expenses'] ?? 0;
@@ -686,6 +687,24 @@ export class SummaryComponent implements OnInit, OnChanges {
   onSubmit() {
     const fileName = 'report';
     this.excelService.exportToExcel([this.result], fileName);
+    this.writeDataToExcel();
+  }
+
+  writeDataToExcel() {
+   
+      // const data = {
+      //   'Purchase Price': this.result['purchase_price'],
+      //   'No of Units': this.result['no_of_units'],
+      //   'EMD': this.result['emd'],
+      //   '2 - Loan': this.result['loan'],
+      //   'Interest Rate': this.result['interest_rate'],
+      //   'Amortization': this.result['amortization'],
+      //   'Interest Only' : this.result['interest_only']
+      // }
+      const data =  {"Purchase Price":this.result['purchase_price'],"No of Units":this.result['no_of_units'],"EMD":this.result['emd'],"2 - Loan":this.result['loan'],"Interest Rate":this.result['interest_rate'],"Amortization":this.result['amortization'],"Interest Only":this.result['interest_only']} 
+      this.excelService.writeToSheet([data]).subscribe(res => {
+        console.log('RESPONSE FROM SHEET', res);
+      })
   }
 
 }

@@ -12,12 +12,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { EditableFieldComponent } from './editable-field/editable-field.component';
 import {MatTableModule} from '@angular/material/table';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     FormsComponent,
     SummaryComponent,
-    EditableFieldComponent
+    EditableFieldComponent,
+    ResultComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,51 @@
+<div class="result-container">
+    <table mat-table [dataSource]="rowData" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="Purchase Price">
+          <th mat-header-cell *matHeaderCellDef> Purchase Price </th>
+          <td mat-cell *matCellDef="let element"> {{element['Purchase Price']}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="No of Units">
+          <th mat-header-cell *matHeaderCellDef> No of Units </th>
+          <td mat-cell *matCellDef="let element"> {{element['No of Units']}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="EMD">
+          <th mat-header-cell *matHeaderCellDef> EMD </th>
+          <td mat-cell *matCellDef="let element"> {{element['EMD']}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="2 - Loan">
+          <th mat-header-cell *matHeaderCellDef> 2 - Loan </th>
+          <td mat-cell *matCellDef="let element"> {{element['2 - Loan']}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Interest Rate">
+          <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
+          <td mat-cell *matCellDef="let element"> {{element['Interest Rate']}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Amortization">
+          <th mat-header-cell *matHeaderCellDef> Amortization </th>
+          <td mat-cell *matCellDef="let element"> {{element['Amortization']}} </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Interest Only">
+          <th mat-header-cell *matHeaderCellDef> Interest Only </th>
+          <td mat-cell *matCellDef="let element"> {{element['Interest Only']}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
